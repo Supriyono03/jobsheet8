@@ -5,13 +5,15 @@ void main() {
     home: Scaffold(
       body: SafeArea(
         child: Wrap(
+          spacing: 8.0, // Spacing between the children
+          runSpacing: 8.0, // Spacing between the lines
           children: [
-            buatKotak(Colors.greenAccent, 100),
-            buatKotak(Colors.orangeAccent[400]!, 70),
-            buatKotak(Colors.greenAccent, 50),
-            buatKotak(Colors.orangeAccent[400]!, 90),
-            buatKotak(Colors.red[300]!, 110),
-            buatKotak(Colors.blue[300]!, 30),
+            buatKotakDenganNama(Colors.greenAccent, 100, 'Green 100'),
+            buatKotakDenganNama(Colors.orangeAccent[400]!, 70, 'Orange 70'),
+            buatKotakDenganNama(Colors.greenAccent, 50, 'Green 50'),
+            buatKotakDenganNama(Colors.orangeAccent[400]!, 90, 'Orange 90'),
+            buatKotakDenganNama(Colors.red[300]!, 110, 'Red 110'),
+            buatKotakDenganNama(Colors.blue[300]!, 30, 'Blue 30'),
           ],
         ),
       ),
@@ -19,11 +21,17 @@ void main() {
   ));
 }
 
-Widget buatKotak(Color warna, double ukuran) {
-  return Container(
-    color: warna,
-    width: ukuran,
-    height: ukuran,
-    margin: EdgeInsets.all(4.0),
+Widget buatKotakDenganNama(Color color, double size, String name) {
+  return Column(
+    mainAxisSize: MainAxisSize.min,
+    children: [
+      Container(
+        width: size,
+        height: size,
+        color: color,
+        margin: EdgeInsets.all(4.0),
+      ),
+      Text(name),
+    ],
   );
 }
